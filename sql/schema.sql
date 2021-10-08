@@ -1,4 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS :schema;
+CREATE EXTENSION postgis;
 SET search_path to :schema, public;
 
 DROP TABLE IF EXISTS agency cascade;
