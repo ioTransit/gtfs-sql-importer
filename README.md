@@ -17,10 +17,15 @@ Import GTFS data into a PostgreSQL database. Includes all the constraints in the
 This importer uses a Makefile to organize a series of SQL commands. The file `src/load.sh` is a shell script that does the heavy lifting of loading the contents of a GTFS zip file into a PostgreSQL database.
 
 Before importing data, set up database with:
-```
+````
 PGDATABASE=mydbname
 make init
-```
+````
+single line example
+````
+make init PGDATABASE=mydbname
+````
+
 This will create the necessary tables, as well as useful indices and foreign keys. (It will create a database named `mydbname` if one does not exist).
 
 Next, download a ZIP file containing a GTFS feed. You do not need to decompress it to import it.
@@ -38,6 +43,10 @@ PGDATABASE=mydbname
 PGHOST=example.com
 PGUSER=username
 make load GTFS=gtfs.zip
+````
+single line example
+````
+make load GTFS=gtfs.zip PGDATABASE=mydbname PGHOST=example.com PGUSER=username
 ````
 
 If you're connecting over the socket, and your postgres username and database match your system username, you don't have to use environment variables.
